@@ -2,6 +2,8 @@
 Author: Alex Vlasa
 Date: 23/11/2022
 """
+from datetime import datetime
+todaysdate = datetime.datetime.today().strftime('&d-&m-&y')
 #interger set-up
 school = (input("Please Enter Your School's Name. "))
 addy1 = (input("Please Enter Your School's Address [Line 1] "))
@@ -36,12 +38,12 @@ while True:
     else:   
         break
         #loop ends
- 
+
 #int set-up
 flight = 267.67
 flightnum = (student+teacher)
 flightcost = round(flightnum*flight,2)
- 
+
 #flight caluclations
 if student>=20:
   num1=int(student/20)
@@ -52,10 +54,9 @@ elif student<20:
   tflight=(teacher-0)
 varflight=(tflight+student)
 finflight=round(varflight*flight, 2)
-discount=(num2*flight)
 #finflight is the total money for flights
 # ^^^ as to not make space between euro and finflight variable
- 
+
 #hotel calculations
 num3 = (student*39.50)
 var1 = (student%4)
@@ -74,8 +75,10 @@ sfinalhoteldays = round(hotelfinalstudent*hotel,2)
 tfinalhoteldays = round(hotelfinalteacher*hotel,2)
 hotelfinal = round(hotelfinalstudent+hotelfinalteacher,2)
 # ^^^ final hotel figures
-finaltotal=(subtotal+var1+var2-discount)
- 
+num1=int(student/20)
+num2=round(num1,0)
+discount=(num2*flight)
+finaltotal=(subtotal+var1+var2-discount) #final total at the end of invoice
 #invoice loop
 while True:
     try:
@@ -94,7 +97,7 @@ while True:
 print("\n\n")
 print('{:^90}'.format("REBEL TOURS LTD"))
 print('{:>70}'.format("Invoice No:"),("\t   "),("<{}>").format(pad))
-print('{:>64}'.format("Date:"),("\t\t\t<Date>"))
+print('{:>64}'.format("Date:"),("\t\t\t< "),(todaysdate),(" >"))
 print(("\n"),'{:>10}'.format("School Name:"),("\t\t\t<{}>").format(school))
 print('{:>9}'.format("Address:"),("\t\t\t\t<{}>").format(addy1))
 print('{:>9}'.format("\t"),("\t\t\t<{}>").format(addy2),("\n"),'{:>9}'.format("\t"),("\t\t\t<{}>").format(addy3))
@@ -110,11 +113,11 @@ print('{:8}'.format(" Student Accomodation:"),('{:>29}'.format("< No. Of Empty B
 print('{:8}'.format(" Teacher Accomodation:"),('{:>29}'.format("< No. Of Empty Beds:")),(var2),("{}").format(">"),'{:>24}'.format("<€{}>").format(surchargeteacher))
 #discount
 #if else statement determines if a discount section is printed on the statement
-if num2<=1:
+if num2>=1:
   print(("\n\n"),'{:8}'.format("Discount:"))
   print('{:8}'.format(" Free Teacher Flights:"),('{:>32}'.format("< No. Of Free Teachers:")),(num2),("{}").format(">"),'{:>22}'.format("<-€{}>").format(discount))
   print(("\n"),('{:>86}'.format("━━━━━━━━━━━━━━")),("\n"))
   print(('{:>63}'.format("Total:")),'{:>18}'.format("<€{}>").format(finaltotal)) #discount is displayed
 else:
   print(("\n"),('{:>86}'.format("━━━━━━━━━━━━━━")),("\n"))
-  print(('{:>63}'.format("Total:")),'{:>17}'.format("<€{}>").format(finaltotal)) #discount applied
+  print(('{:>63}'.format("Total:")),'{:>17}'.format("<€{}>").format(finaltotal)) #discount not applied
